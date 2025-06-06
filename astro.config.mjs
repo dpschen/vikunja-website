@@ -5,6 +5,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import sitemap from '@astrojs/sitemap'
 import cloudflare from '@astrojs/cloudflare'
 import tailwindcss from '@tailwindcss/vite'
+import pagefind from 'astro-pagefind'
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,10 +16,11 @@ export default defineConfig({
 			tailwindcss(),
 		],
 	},
-	integrations: [
-		markdoc(),
-		sitemap(),
-	],
+        integrations: [
+                markdoc(),
+                sitemap(),
+                pagefind(),
+        ],
 	adapter: cloudflare(),
 	markdown: {
 		rehypePlugins: [

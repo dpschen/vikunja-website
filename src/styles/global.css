@@ -44,3 +44,14 @@ html.dark .astro-code span {
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
+
+.pagefind-ui {
+  --pagefind-ui-primary: var(--color-primary);
+  --pagefind-ui-background: theme(colors.gray.200/50);
+  --pagefind-ui-border-radius: 0.25rem;
+  width: 100%;
+}
+
+.dark .pagefind-ui {
+  --pagefind-ui-background: theme(colors.gray.800/50);
+}
