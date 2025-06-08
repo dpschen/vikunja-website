@@ -65,16 +65,19 @@ async function getSidebarNavigation(): Promise<DocumentationArray> {
 		})
 	})
 
-	const order = ['setup', 'usage', 'development']
+       const order = ['setup', 'usage', 'development']
 
-	const sortedData = order.reduce((obj: { [key: string]: SectionItem[] }, key) => {
-		if (entries[key]) {
-			obj[key] = entries[key].sort((a: SectionItem, b: SectionItem) => a.title.localeCompare(b.title))
-		}
-		return obj
-	}, {})
+       const sortedData = order.reduce((obj: { [key: string]: SectionItem[] }, key) => {
+               if (entries[key]) {
+                       obj[key] = entries[key]
+               }
+               return obj
+       }, {})
 
-	return Object.entries(sortedData)
+       return Object.entries(sortedData).map(([key, val]) => [
+               key.charAt(0).toUpperCase() + key.slice(1),
+               val,
+       ])
 }
 
 const sidebarEntries = await getSidebarNavigation()
@@ -90,8 +93,8 @@ const sidebarEntries = await getSidebarNavigation()
         <aside class="w-full lg:w-1/5 hidden lg:block order-1 px-2 text-gray-600 dark:text-gray-300" id="docsMenu">
             <nav class="pb-4">
 				{sidebarEntries.map(([key, entries]) => (
-                        <p class="pb-2 pt-4 pl-2 font-display uppercase font-bold text-gray-500 dark:text-gray-400">
-							{key}
+                        <p class="mt-6 mb-2 pl-2 pb-1 border-b border-gray-200 dark:border-gray-700 font-display uppercase font-semibold tracking-wide text-gray-700 dark:text-gray-200">
+                                {key}
                         </p>
                         <ul>
 							{entries.map(item => (
